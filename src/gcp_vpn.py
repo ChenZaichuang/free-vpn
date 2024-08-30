@@ -40,7 +40,7 @@ class GCPVPN:
         self.ssh_session.expect(['@cloudshell', pexpect.EOF])
         logging.info('开始启动GCP VPN')
         sleep(3)
-        self.ssh_session.sendline('cd ~/vpn2 && ./start.sh')
+        self.ssh_session.sendline('curl -O "https://raw.githubusercontent.com/ChenZaichuang/free-vpn/main/build/install_on_gcp.sh" && bash install_on_gcp.sh zcchen666')
         logging.info('成功启动GCP VPN')
 
     def stop(self):
