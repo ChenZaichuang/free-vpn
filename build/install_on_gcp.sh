@@ -18,7 +18,8 @@ VPN_PASSWORD=$1
 # 判断目录是否存在
 if [ ! -d "$VPN_DIR" ]; then
   # 下载zip文件
-  curl -O "https://raw.githubusercontent.com/free-vpn/main/resources/gcp/free_vpn.zip"
+  curl -O "https://raw.githubusercontent.com/ChenZaichuang/free-vpn/main/resources/gcp/free_vpn.zip"
+  
   # 提示用户输入密码并解压缩zip文件
 
   unzip -q -P "$VPN_PASSWORD" free_vpn.zip -d .
