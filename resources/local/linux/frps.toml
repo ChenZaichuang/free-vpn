@@ -1,0 +1,8 @@
+[common]
+bind_port = 7100
+kcp_bind_port = 7100
+token = qwer1234
+
+dashboard_user = admin
+dashboard_pwd = admin
+dashboard_port = 7501

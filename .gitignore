@@ -1,0 +1,4 @@
+venv/
+build/build.sh
+resources/gcp/vpn/
+resources/github/
