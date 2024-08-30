@@ -10,30 +10,26 @@ then
     ${su_prefix}apt update -y && ${su_prefix}apt install -y curl unzip screen
 fi
 
-
-VPN_DIR="./vpn"
+rm -rf ./vpn || true
 
 VPN_PASSWORD=$1
 
-# 判断目录是否存在
-if [ ! -d "$VPN_DIR" ]; then
-  # 下载zip文件
-  curl -O "https://raw.githubusercontent.com/ChenZaichuang/free-vpn/main/resources/gcp/free_vpn.zip"
-  
-  # 提示用户输入密码并解压缩zip文件
+# 下载zip文件
+curl -O "https://raw.githubusercontent.com/ChenZaichuang/free-vpn/main/resources/gcp/vpn.zip"
 
-  unzip -q -P "$VPN_PASSWORD" free_vpn.zip -d .
+# 提示用户输入密码并解压缩zip文件
 
-  if [ ! $? -eq 0 ]; then
-    # 解压缩失败，提示用户重新输入密码
-    echo "Incorrect password."
-    rm -rf ${PWD}/vpn
-    exit 1
-  fi
+unzip -q -P "$VPN_PASSWORD" vpn.zip -d .
 
-  # 修改文件权限
-  chmod +x ${PWD}/free_vpn/start.sh
+if [ ! $? -eq 0 ]; then
+  # 解压缩失败，提示用户重新输入密码
+  echo "Incorrect password."
+  rm -rf ${PWD}/vpn
+  exit 1
 fi
 
+# 修改文件权限
+chmod +x ${PWD}/vpn/start.sh
+
 # 执行VPN脚本
-bash free_vpn/start.sh
+bash vpn/start.sh
