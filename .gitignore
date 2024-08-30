@@ -2,3 +2,4 @@ venv/
 build/build.sh
 resources/gcp/vpn/
 resources/github/
+__pycache__
